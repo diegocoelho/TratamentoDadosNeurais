@@ -33,18 +33,7 @@ public class Main {
 		hash.put(45, 86);
 		hash.put(47, 95);
 	}
-	public static int randInt(int min, int max) {
 
-	    // NOTE: Usually this should be a field rather than a method
-	    // variable so that it is not re-seeded every call.
-	    Random rand = new Random();
-
-	    // nextInt is normally exclusive of the top value,
-	    // so add 1 to make it inclusive
-	    int randomNum = rand.nextInt((max - min) + 1) + min;
-
-	    return randomNum;
-	}
 	public static int importancia(int ent){
 		if (ent == 0){
 			return 1;
@@ -60,17 +49,23 @@ public class Main {
 		}	
 	}
 	public static int directs(int imp){
+		double d = Math.random();
 		switch (imp) {
 		case 1:
-			return randInt(21, 40);
+			if (d > 0.9) return 1;
+			return 0;
 		case 2:
-			return randInt(11, 20);
+			if (d > 0.8) return 1;
+			return 0;
 		case 3:
-			return randInt(6, 10);
+			if (d > 0.6) return 1;
+			return 0;
 		case 4:
-			return randInt(3, 5);
+			if (d > 0.4) return 1;
+			return 0;
 		case 5:
-			return randInt(1, 2);
+			if (d > 0.2) return 1;
+			return 0;
 		}
 		return -1;
 	}
@@ -86,7 +81,7 @@ public class Main {
 			int soma = 0;
 			br = new BufferedReader(
 					new FileReader(
-							"/home/diego/eclipse-workspace/TratamentoDadosNeurais/src/pckg/dados.txt"));
+							"C://Users/Diego/Documents/TratamentoDadosNeurais/src/pckg/dados.txt"));
 			writer = new PrintWriter("saidadados.txt", "UTF-8");
 			while ((sCurrentLine = br.readLine()) != null) {
 				refreshHash();
